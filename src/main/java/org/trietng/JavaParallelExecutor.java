@@ -61,6 +61,7 @@ public class JavaParallelExecutor {
                     System.out.println(backgroundColor + prefix + ConsoleBackgroundColor.RESET + " " + line);
                 }
                 process.waitFor();
+                this.destroy();
             } catch (IOException | InterruptedException e) {
                 System.err.println(e.getMessage());
             }
@@ -117,7 +118,6 @@ public class JavaParallelExecutor {
                 for (var ce : ces) {
                     ce.destroy();
                 }
-                executor.shutdown();
             }));
             for (var ce : ces) {
                 executor.execute(ce);
