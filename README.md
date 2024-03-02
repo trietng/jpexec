@@ -1,2 +1,2 @@
 # jpexec
-A private Java parallel executor for web development.
+A Java parallel executor for scripting purposes.
