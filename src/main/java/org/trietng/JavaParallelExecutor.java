@@ -1,7 +1,11 @@
 package org.trietng;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.TreeMap;
+import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -92,7 +96,7 @@ public class JavaParallelExecutor {
         System.out.println("Allowed options: ");
         System.out.println("-h, --help                      show help message");
         System.out.println("-s, --separator, --delimiter    set the separator");
-        System.out.println("-pre, --pre, --startup          add a startup command");
+        System.out.println("-p, --pre, --startup          add a startup command");
     }
 
     private static void printUsage() {
@@ -182,7 +186,7 @@ public class JavaParallelExecutor {
             for (var opt : opts.entrySet()) {
                 var key = opt.getKey();
                 switch (key) {
-                    case "pre", "startup" -> {
+                    case "p", "pre", "startup" -> {
                     }
                     case "s", "separator", "delimiter" -> {
                         var value = opt.getValue();
@@ -194,7 +198,7 @@ public class JavaParallelExecutor {
                             return;
                         }
                     }
-                    default -> System.out.println("Invalid option: " + key);
+                    default -> System.out.println("ERROR Invalid option: " + key);
                 }
             }
             String[][] commands = new String[cmds.size()][3];
